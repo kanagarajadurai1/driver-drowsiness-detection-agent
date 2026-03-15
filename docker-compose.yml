@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  drowsiness-detector:
+    build: .
+    container_name: driver-drowsiness-detector
+    ports:
+      - "5000:5000"  # Adjust the port if needed
+    volumes:
+      - .:/app  # Mount current directory for live changes (optional)
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+    # If your app needs camera access, add:
+    # devices:
+    #   - /dev/video0:/dev/video0
